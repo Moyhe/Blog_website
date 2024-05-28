@@ -1,7 +1,12 @@
 #!/usr/bin/env bash
 echo "Running composer"
 
-composer install --no-dev --working-dir=/var/www/html
+docker run --rm \
+-u "$(id -u):$(id -g)" \
+-v "$(pwd):/var/www/html" \
+-w /var/www/html \
+laravelsail/php82-composer:latest \
+composer install --ignore-platform-reqs
 
 echo "Caching config..."
 php artisan config:cache
