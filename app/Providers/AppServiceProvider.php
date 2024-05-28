@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Services\Newsletter;
 use App\Services\MailchimpNewsletter;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Routing\UrlGenerator;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Gate;
 use MailchimpMarketing\ApiClient;
@@ -31,7 +32,7 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      */
-    public function boot(): void
+    public function boot(UrlGenerator $url): void
     {
         Model::unguard();
 
@@ -42,5 +43,10 @@ class AppServiceProvider extends ServiceProvider
         Blade::if('admin', function () {
             return request()->user()?->can('admin');
         });
+
+
+        if (app()->environment() == 'productoin') {
+            $url->forceScheme('https');
+        }
     }
 }
