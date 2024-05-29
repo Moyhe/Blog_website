@@ -11,6 +11,7 @@ use Illuminate\Routing\UrlGenerator;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Gate;
 use MailchimpMarketing\ApiClient;
+use \Clockwork\Support\Laravel\ClockworkServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -27,6 +28,10 @@ class AppServiceProvider extends ServiceProvider
 
             return new MailchimpNewsletter($client);
         });
+
+        if (app()->environment('local')) {
+            app()->register(ClockworkServiceProvider::class);
+        }
     }
 
     /**
