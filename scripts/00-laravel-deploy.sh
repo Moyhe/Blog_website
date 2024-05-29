@@ -2,7 +2,7 @@
 echo "Running composer"
 cp /etc/secrets/.env .env
 composer global require hirak/prestissimo
-composer install  --working-dir=/var/www/html
+composer install --no-dev --working-dir=/var/www/html
 
 echo "Clearing caches..."
 php artisan optimize:clear
@@ -21,7 +21,6 @@ echo "done deploying"
 echo "Seeding Data..."
 php artisan db:seed
 
-echo "Data seeded"
 
 echo "link storage"
 php artisan storage:link
