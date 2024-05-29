@@ -18,9 +18,3 @@ php artisan migrate --force
 
 echo "done deploying"
 
-echo "Seeding Data..."
-php artisan db:seed
-
-
-echo "link storage"
-php artisan storage:link
