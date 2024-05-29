@@ -21,5 +21,7 @@ echo "done deploying"
 echo "Seeding Data..."
 php artisan db:seed
 
+echo "Data seeded"
+
 echo "link storage"
 php artisan storage:link
