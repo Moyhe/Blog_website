@@ -8,7 +8,7 @@ laravel 10 blog website with docker and postgresql. it has admin panel for manag
 
     git clone https://github.com/Moyhe/Blogging_website.git
 
-2.Run composer install
+2.Run composer install && npm install then
 
 Navigate into project folder using terminal and run
 
